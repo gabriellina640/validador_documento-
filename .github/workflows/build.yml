@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest 
 
     steps:
     - name: Baixar o código do repositório
@@ -25,10 +25,7 @@ jobs:
 
     - name: Compilar o executável com PyInstaller
       run: |
-        # --onefile: Gera um único arquivo .exe
-        # --windowed: Esconde aquela tela preta do terminal (CMD) de fundo
-        # --collect-all customtkinter: Garante que os temas visuais modernos não quebrem
-        pyinstaller --noconfirm --onefile --windowed --name "Validador_Corregedoria" --collect-all customtkinter main.py
+        pyinstaller --noconfirm --onefile --windowed --name "Validador_Corregedoria" --icon="icone.ico" --collect-all customtkinter main.py
 
     - name: Disponibilizar o .exe para Download
       uses: actions/upload-artifact@v4
