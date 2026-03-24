@@ -1,0 +1,37 @@
+name: Gerar Executavel Windows
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Baixar o código do repositório
+      uses: actions/checkout@v4
+
+    - name: Configurar o Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' 
+
+    - name: Instalar Bibliotecas Necessárias
+      run: |
+        python -m pip install --upgrade pip
+        pip install customtkinter python-docx openpyxl pymupdf pyinstaller
+
+    - name: Compilar o executável com PyInstaller
+      run: |
+        # --onefile: Gera um único arquivo .exe
+        # --windowed: Esconde aquela tela preta do terminal (CMD) de fundo
+        # --collect-all customtkinter: Garante que os temas visuais modernos não quebrem
+        pyinstaller --noconfirm --onefile --windowed --name "Validador_Corregedoria" --collect-all customtkinter main.py
+
+    - name: Disponibilizar o .exe para Download
+      uses: actions/upload-artifact@v4
+      with:
+        name: Validador_Corregedoria_Windows
+        path: dist/Validador_Corregedoria.exe

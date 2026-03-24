@@ -1,0 +1,26 @@
+# Arquivos de Banco de Dados (Segurança Institucional)
+*.db
+auditoria_corregedoria.db
+
+# Pastas de saída geradas pela automação
+Arquivos_Processados_Corregedoria/
+Laudos_Corregedoria/
+
+# Cache e Arquivos temporários do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes Virtuais
+venv/
+env/
+.env
+
+# Pastas geradas pelo PyInstaller (Build local, se você testar)
+build/
+dist/
+*.spec
+
+# Configurações de IDE (VSCode, PyCharm, etc)
+.vscode/
+.idea/
