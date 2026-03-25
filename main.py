@@ -116,7 +116,7 @@ class AppCorregedoria(ctk.CTk):
         self.btn_laudo.configure(state="disabled")
 
     def verificar_arquivo(self):
-        caminho = filedialog.askopenfilename(title="Selecione o arquivo suspeito")
+        caminho = filedialog.askopenfilename(title="Selecione o arquivo para verificação")
         if not caminho: return
         
         self.ultimo_arquivo_suspeito = caminho
